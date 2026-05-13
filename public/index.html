@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Agile Tracker - Kanban</title>
+    <style>
+      body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0}
+      header{background:#333;color:#fff;padding:12px}
+      .board{display:flex;gap:12px;padding:12px}
+      .col{background:#f4f4f4;padding:8px;border-radius:4px;flex:1;min-height:300px}
+      .col h3{margin:0 0 8px 0}
+      .card{background:#fff;padding:8px;margin-bottom:8px;border-radius:4px;cursor:grab}
+      .card .meta{font-size:12px;color:#666}
+      #newForm{padding:12px;background:#fafafa;border-top:1px solid #eee}
+      .acceptance{font-size:12px;color:#333;margin-top:6px}
+    </style>
+  </head>
+  <body>
+    <header><h1>Agile Tracker (Kanban)</h1></header>
+    <div id="newForm">
+      <strong>Lisa uus story</strong>
+      <div>
+        <input id="title" placeholder="Pealkiri" />
+        <input id="points" placeholder="Punktid" style="width:80px" />
+        <select id="status"><option value="todo">todo</option><option value="doing">doing</option><option value="done">done</option></select>
+      </div>
+      <div>
+        <textarea id="description" placeholder="Kirjeldus" rows="2" style="width:60%"></textarea>
+        <textarea id="acceptance" placeholder="Vastuvõtutingimused (iga rida eraldi)" rows="2" style="width:35%"></textarea>
+      </div>
+      <button id="addBtn">Lisa</button>
+      <div id="formError" style="color:red"></div>
+    </div>
+
+    <div class="board">
+      <div class="col" data-status="todo"><h3>Todo / Backlog</h3><div class="list" id="todoList"></div></div>
+      <div class="col" data-status="doing"><h3>Doing</h3><div class="list" id="doingList"></div></div>
+      <div class="col" data-status="done"><h3>Done</h3><div class="list" id="doneList"></div></div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
