@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360">
+  <rect width="100%" height="100%" fill="#f6f7fb"/>
+  <text x="20" y="30" font-size="18" fill="#333">Agile Tracker — Kanban (screenshot)</text>
+  <g transform="translate(20,60)">
+    <rect x="0" y="0" width="240" height="260" rx="6" fill="#fff" stroke="#ddd"/>
+    <text x="12" y="20" font-size="14" fill="#111">Todo / Backlog</text>
+    <rect x="12" y="36" width="216" height="48" rx="4" fill="#fff" stroke="#ccc"/>
+    <text x="18" y="60" font-size="12" fill="#333">[3 pts] Lisa story loomine</text>
+    <rect x="12" y="92" width="216" height="48" rx="4" fill="#fff" stroke="#ccc"/>
+    <text x="18" y="116" font-size="12" fill="#333">[8 pts] Prioritiseerimine</text>
+  </g>
+  <g transform="translate(280,60)">
+    <rect x="0" y="0" width="240" height="260" rx="6" fill="#fff" stroke="#ddd"/>
+    <text x="12" y="20" font-size="14" fill="#111">Doing</text>
+    <rect x="12" y="36" width="216" height="48" rx="4" fill="#fff" stroke="#ccc"/>
+    <text x="18" y="60" font-size="12" fill="#333">[5 pts] Muuta staatust</text>
+  </g>
+  <g transform="translate(540,60)">
+    <rect x="0" y="0" width="240" height="260" rx="6" fill="#fff" stroke="#ddd"/>
+    <text x="12" y="20" font-size="14" fill="#111">Done</text>
+  </g>
+</svg>
