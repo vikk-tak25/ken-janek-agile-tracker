@@ -1,44 +1,48 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Agile Tracker - Kanban</title>
-    <style>
-      body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0}
-      header{background:#333;color:#fff;padding:12px}
-      .board{display:flex;gap:12px;padding:12px}
-      .col{background:#f4f4f4;padding:8px;border-radius:4px;flex:1;min-height:300px}
-      .col h3{margin:0 0 8px 0}
-      .card{background:#fff;padding:8px;margin-bottom:8px;border-radius:4px;cursor:grab}
-      .card .meta{font-size:12px;color:#666}
-      #newForm{padding:12px;background:#fafafa;border-top:1px solid #eee}
-      .acceptance{font-size:12px;color:#333;margin-top:6px}
-    </style>
-  </head>
-  <body>
-    <header><h1>Agile Tracker (Kanban)</h1></header>
-    <div id="newForm">
-      <strong>Lisa uus story</strong>
-      <div>
-        <input id="title" placeholder="Pealkiri" />
-        <input id="points" placeholder="Punktid" style="width:80px" />
-        <select id="status"><option value="todo">todo</option><option value="doing">doing</option><option value="done">done</option></select>
+<html lang="et">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agile Tracker - Kanban</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header><h1>Agile Tracker</h1><p>Kasutajalood ja töö edenemine</p></header>
+  <main>
+    <form id="newForm" novalidate>
+      <h2 id="formHeading">Lisa uus story</h2>
+      <div class="fields">
+        <label>Pealkiri<input id="title" required /></label>
+        <label>Punktid<input id="points" inputmode="numeric" required aria-describedby="formError" /></label>
+        <label>Staatus<select id="status"><option value="todo">Todo / Backlog</option><option value="doing">Doing</option><option value="done">Done</option></select></label>
       </div>
-      <div>
-        <textarea id="description" placeholder="Kirjeldus" rows="2" style="width:60%"></textarea>
-        <textarea id="acceptance" placeholder="Vastuvõtutingimused (iga rida eraldi)" rows="2" style="width:35%"></textarea>
+      <div class="fields">
+        <label class="wide">Kirjeldus<textarea id="description" rows="2"></textarea></label>
+        <label class="wide">Vastuvõtutingimused (iga rida eraldi)<textarea id="acceptance" rows="2" required></textarea></label>
       </div>
-      <button id="addBtn">Lisa</button>
-      <div id="formError" style="color:red"></div>
-    </div>
-
+      <button id="addBtn" type="submit">Lisa story</button>
+      <button id="cancelEdit" type="button" hidden>Loobu muutmisest</button>
+      <div id="formError" class="error" role="alert"></div>
+    </form>
+    <p class="hint">Lohista kaarte veergude vahel. Backlogis lohista kaart soovitud kaardi ette või järele; järjekord salvestatakse automaatselt.</p>
+    <section class="filters" aria-label="Otsing ja filtrid">
+      <label>Otsi story’sid<input id="search" type="search" placeholder="Pealkiri, kirjeldus või ID" /></label>
+      <label>Filtreeri staatuse järgi<select id="filterStatus"><option value="">Kõik staatused</option><option value="todo">Todo / Backlog</option><option value="doing">Doing</option><option value="done">Done</option></select></label>
+      <label>Filtreeri punktide järgi<input id="filterPoints" type="number" min="0" step="1" placeholder="Kõik punktid" /></label>
+      <button id="clearFilters" type="button">Tühjenda filtrid</button>
+    </section>
+    <p id="filterSummary" class="hint" role="status"></p>
+    <p id="boardError" class="error" role="alert"></p>
     <div class="board">
-      <div class="col" data-status="todo"><h3>Todo / Backlog</h3><div class="list" id="todoList"></div></div>
-      <div class="col" data-status="doing"><h3>Doing</h3><div class="list" id="doingList"></div></div>
-      <div class="col" data-status="done"><h3>Done</h3><div class="list" id="doneList"></div></div>
+      <section class="col" data-status="todo" aria-label="Todo / Backlog"><h2>Todo / Backlog</h2><div class="list" id="todoList"></div></section>
+      <section class="col" data-status="doing" aria-label="Doing"><h2>Doing</h2><div class="list" id="doingList"></div></section>
+      <section class="col" data-status="done" aria-label="Done"><h2>Done</h2><div class="list" id="doneList"></div></section>
     </div>
-
-    <script src="/app.js"></script>
-  </body>
+  </main>
+  <dialog id="storyDetail" aria-labelledby="detailHeading">
+    <div class="detail-header"><h2 id="detailHeading">Story detailid</h2><button id="closeDetail" type="button">Sulge detailvaade</button></div>
+    <div id="detailContent"></div>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
 </html>
