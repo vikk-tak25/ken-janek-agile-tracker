@@ -130,9 +130,3 @@ npm.cmd run test:ui
 ![Töötav Kanban-laud](docs/kanban.png)
 
 ![Story detailvaade](docs/detail.png)
-
-## GitHubi töökorraldus
-
-Iga edasine funktsioon või parandus tuleb siduda GitHubi issue'ga. Loo enne selle arendamist eraldi haru, mille nimi algab tegeliku issue ID-ga (näiteks `12-backlogi-jarjestamine`). Tee väikesed sisulised commit'id ja pushi iga commit kohe. Hoia issue's kirjas vastuvõtutingimused ning lisa pull request'ile testimise tulemus.
-
-Varasemat ajalugu ei kirjutata ümber. Tagantjärele loodud issue'd ja harud ei tõenda varasema arenduse töökorraldust.
